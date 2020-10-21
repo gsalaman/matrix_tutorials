@@ -36,18 +36,18 @@ last_update_time = datetime.now()
 
 image = Image.new("RGB", (1,1))
 draw = ImageDraw.Draw(image)
-red = (255,0,0)
+red = (40,0,0)
 blue = (0,0,255)
 green = (0,255,0)
 draw.rectangle((0,0,0,0),outline=red, fill=red)
 
 blank_image = Image.new("RGB", (1,1))
 blank_draw = ImageDraw.Draw(blank_image)
-blank_draw.rectangle((0,0,0,0),outline=(0,0,0),fill=(0,0,0)
+blank_draw.rectangle((0,0,0,0),outline=(0,0,0),fill=(0,0,0))
 
-for minute in range (5):
-  for second in range (60):
+for minute in range(5):
+  for second in range(60):
     matrix.SetImage(image,second,minute*5)
-    time.sleep(1)
+    sleep(1)
     matrix.SetImage(blank_image, second, minute * 5)
 
