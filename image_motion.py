@@ -25,7 +25,9 @@ options.rows = matrix_rows
 options.cols = matrix_columns 
 options.chain_length = matrix_horizontal
 options.parallel = matrix_vertical 
-options.hardware_mapping = 'regular' 
+options.hardware_mapping = 'regular'
+options.gpio_slowdown = 3
+ 
 matrix = RGBMatrix(options = options)
 
 ###################################

@@ -27,7 +27,7 @@ options.chain_length = matrix_horizontal
 options.parallel = matrix_vertical 
 
 options.hardware_mapping = 'regular'  
-options.gpio_slowdown = 2
+options.gpio_slowdown = 3
 matrix = RGBMatrix(options = options)
 
 red = (255,0,0)
