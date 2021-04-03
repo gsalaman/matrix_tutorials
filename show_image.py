@@ -26,16 +26,16 @@ options.cols = matrix_columns
 options.chain_length = matrix_horizontal
 options.parallel = matrix_vertical 
 options.hardware_mapping = 'regular' 
-options.gpio_slowdown = 3
+options.gpio_slowdown = 2
 
 matrix = RGBMatrix(options = options)
 
 ###################################
 # Main code 
 ###################################
-background = Image.open("bomb_icon.gif")
+background = Image.open("andr_small.jpeg")
 background = background.convert("RGB")
-background = background.resize((16,16))
+background = background.resize((total_columns,total_rows))
 
 matrix.SetImage(background,0,0)
 

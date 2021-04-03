@@ -1,12 +1,13 @@
-
-# Used in main loop
 from time import sleep
+import datetime
+
+import random
 
 ###################################
 # Graphics imports, constants and structures
 ###################################
 from rgbmatrix import RGBMatrix, RGBMatrixOptions
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 
 # this is the size of ONE of our matrixes. 
 matrix_rows = 64 
@@ -24,34 +25,34 @@ options.rows = matrix_rows
 options.cols = matrix_columns 
 options.chain_length = matrix_horizontal
 options.parallel = matrix_vertical 
-
-#options.hardware_mapping = 'adafruit-hat-pwm' 
-#options.hardware_mapping = 'adafruit-hat'  # If you have an Adafruit HAT: 'adafruit-hat'
-options.hardware_mapping = 'regular'  
-
-options.gpio_slowdown = 2
-
+options.hardware_mapping = 'regular'
+options.gpio_slowdown = 3
+ 
 matrix = RGBMatrix(options = options)
 
 ###################################
-# Main loop 
+# Main code 
 ###################################
-image = Image.new("RGB", (total_columns,total_rows))
-draw = ImageDraw.Draw(image)
-red = (255,0,0)
-blue = (0,0,255)
-green = (0,255,0)
-draw.rectangle( (0,0,total_columns-1,total_rows-1), outline = (255,255,255) )
-draw.line((0,0,32,96),fill=red)
-draw.line((5,0,37,96),fill=green)
-draw.line((10,-10,42,96),fill=blue)
+icon_size = 16
 
-matrix.SetImage(image, 0, 0)
+icon_image = Image.open("minesweeper_flag.png")
+icon_image = icon_image.convert("RGB")
+
+# don't need this, as we're already 16x16
+#icon_image = icon_image.resize((icon_size,icon_size))
+
+icon_x = 16 
+icon_y = 16 
 
 try:
   print("Press CTRL-C to stop")
   while True:
-    sleep(100)
+
+    # show the image 
+    matrix.SetImage(icon_image,icon_x,icon_y)
+
+    sleep(.1)
+
 except KeyboardInterrupt:
   exit(0)
 
